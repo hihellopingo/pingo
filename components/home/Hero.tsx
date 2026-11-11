@@ -29,7 +29,7 @@ export const Hero: React.FC = () => {
         }
       `}</style>
 
-      <div className="max-w-7xl xl:max-w-[1340px] mx-auto px-6 sm:px-8">
+      <div className="max-w-7xl xl:max-w-[1340px] mx-auto px-4 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 xl:gap-12 items-center">
           {/* Left Column: Responsive Hero Copy */}
           <div className="lg:col-span-7 xl:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 sm:space-y-8 z-10">

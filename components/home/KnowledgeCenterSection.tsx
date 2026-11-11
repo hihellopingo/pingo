@@ -34,7 +34,7 @@ export const KnowledgeCenterSection: React.FC<KnowledgeCenterSectionProps> = ({
       <div className="absolute bottom-10 left-0 w-[650px] h-[650px] bg-[#3984FF]/6 dark:bg-[#3984FF]/12 rounded-full blur-[140px] pointer-events-none animate-pulse-glow" />
       <div className="absolute top-1/2 right-1/4 w-[480px] h-[480px] bg-[#20C5D8]/5 dark:bg-[#20C5D8]/10 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
         
         {/* ========================================================= */}
         {/* 1. SECTION HEADING                                        */}

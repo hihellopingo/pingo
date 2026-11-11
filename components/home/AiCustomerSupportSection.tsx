@@ -39,7 +39,7 @@ export const AiCustomerSupportSection: React.FC<AiCustomerSupportSectionProps> =
       <div className="absolute bottom-10 right-0 w-[650px] h-[650px] bg-[#3984FF]/10 dark:bg-[#3984FF]/15 rounded-full blur-[140px] pointer-events-none animate-pulse-glow" />
       <div className="absolute top-1/2 left-1/3 w-[480px] h-[480px] bg-[#20C5D8]/8 dark:bg-[#20C5D8]/10 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
           
           {/* ========================================================= */}

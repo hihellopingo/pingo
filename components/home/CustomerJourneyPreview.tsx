@@ -47,27 +47,27 @@ export const CustomerJourneyPreview: React.FC<CustomerJourneyPreviewProps> = ({
       ? "Ticket Escalation Flow"
       : stageLabels[activeStage] || "Live Journey";
   return (
-    <div className="relative w-full rounded-2xl sm:rounded-3xl bg-white dark:bg-[#141126]/90 border border-[#E5E7F0] dark:border-white/[0.08] backdrop-blur-xl shadow-xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.6)] overflow-hidden min-h-[460px] sm:min-h-[500px] flex flex-col justify-between transition-colors duration-200">
+    <div className="relative w-full rounded-2xl sm:rounded-3xl bg-white dark:bg-[#141126]/90 border border-[#E5E7F0] dark:border-white/[0.08] backdrop-blur-xl shadow-xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.6)] overflow-hidden min-h-[350px] sm:min-h-[480px] flex flex-col justify-between transition-colors duration-200">
       {/* Top Window Header */}
-      <div className="flex items-center justify-between px-5 py-3.5 border-b border-[#E5E7F0] dark:border-white/[0.06] bg-[#F5F6FA] dark:bg-[#100D1D]/90 transition-colors duration-200">
+      <div className="flex items-center justify-between px-4 sm:px-5 py-3 sm:py-3.5 border-b border-[#E5E7F0] dark:border-white/[0.06] bg-[#F5F6FA] dark:bg-[#100D1D]/90 transition-colors duration-200">
         <div className="flex items-center gap-2">
           <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]/80" />
           <div className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]/80" />
           <div className="w-2.5 h-2.5 rounded-full bg-[#27C93F]/80" />
-          <span className="ml-2 text-xs font-mono text-[#62677D] dark:text-[#D5D0E5]/60">
+          <span className="ml-2 text-xs font-mono text-[#62677D] dark:text-[#D5D0E5]/60 truncate max-w-[130px] sm:max-w-none">
             pingo.journey / stage-0{activeStage + 1}
           </span>
         </div>
 
         {/* Stage Status Badge */}
-        <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-purple-100 dark:bg-purple-500/10 border border-purple-200 dark:border-purple-500/20 text-[11px] text-[#782BFF] dark:text-purple-300 font-mono">
+        <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-purple-100 dark:bg-purple-500/10 border border-purple-200 dark:border-purple-500/20 text-[11px] text-[#782BFF] dark:text-purple-300 font-mono flex-shrink-0">
           <GitBranch className="w-3 h-3 text-[#782BFF] dark:text-[#B5FF45]" />
-          <span>{currentBadge}</span>
+          <span className="truncate max-w-[120px] sm:max-w-none">{currentBadge}</span>
         </div>
       </div>
 
       {/* Main Interactive Stage Visualization */}
-      <div className="relative p-5 sm:p-7 flex-1 flex flex-col justify-center">
+      <div className="relative p-4 sm:p-7 flex-1 flex flex-col justify-center">
         <AnimatePresence mode="wait">
           {/* STAGE 01: Customer Visits Your Website */}
           {activeStage === 0 && (

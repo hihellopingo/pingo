@@ -39,13 +39,13 @@ export const CustomerJourneySection: React.FC = () => {
     <section
       id="customer-journey"
       aria-label="Pingo Customer Journey"
-      className="relative py-20 sm:py-24 lg:py-32 z-10 bg-white dark:bg-[#100D1D]/70 border-b border-[#E5E7F0] dark:border-white/[0.06] transition-colors duration-200"
+      className="relative py-16 sm:py-24 lg:py-32 z-10 bg-white dark:bg-[#100D1D]/70 border-b border-[#E5E7F0] dark:border-white/[0.06] transition-colors duration-200 overflow-hidden"
     >
       {/* Background ambient lighting */}
       <div className="absolute top-1/3 -right-32 w-[600px] h-[600px] bg-[#782BFF]/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-10 -left-32 w-[650px] h-[650px] bg-[#4C16B8]/15 rounded-full blur-[150px] pointer-events-none animate-pulse-glow" />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* ========================================================= */}
         {/* 1. SECTION HEADER (NO DIRECT LINKS OR TABS)               */}
         {/* ========================================================= */}
@@ -99,7 +99,7 @@ export const CustomerJourneySection: React.FC = () => {
                   ref={(el) => {
                     stepRefs.current[idx] = el;
                   }}
-                  className={`relative py-12 transition-opacity duration-300 md:py-24 ${
+                  className={`relative py-8 sm:py-14 md:py-24 transition-opacity duration-300 ${
                     isActive ? "opacity-100" : "opacity-35"
                   }`}
                 >

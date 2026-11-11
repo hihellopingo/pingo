@@ -21,7 +21,7 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-r from-[#635BFF]/8 via-[#3984FF]/8 to-[#20C5D8]/8 dark:from-[#635BFF]/12 dark:via-[#3984FF]/12 dark:to-[#20C5D8]/12 rounded-full blur-[120px] pointer-events-none" />
 
       {/* Full-width container with centered, elegant layout (No box, no card) */}
-      <div className="max-w-4xl mx-auto px-6 sm:px-8 relative z-10 text-center">
+      <div className="max-w-4xl mx-auto px-4 sm:px-8 relative z-10 text-center">
         
         {/* Subtle Brand Accent Indicator */}
         <div className="flex items-center justify-center gap-1.5 mb-5 sm:mb-6" aria-hidden="true">

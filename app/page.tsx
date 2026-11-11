@@ -11,7 +11,7 @@ import FinalCtaSection from "@/components/home/FinalCtaSection";
 
 export default function HomePage() {
   return (
-    <div className="relative bg-[#F8F9FE] dark:bg-[#080711] text-[#171B2E] dark:text-white transition-colors duration-200">
+    <div className="relative bg-[#F8F9FE] dark:bg-[#080711] text-[#171B2E] dark:text-white transition-colors duration-200 overflow-x-clip max-w-full">
       <Hero />
       <StatisticsSection />
       <HowItWorksSection />

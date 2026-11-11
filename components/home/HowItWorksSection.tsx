@@ -40,13 +40,13 @@ export const HowItWorksSection: React.FC = () => {
     <section
       id="how-it-works"
       aria-label="How Pingo Works"
-      className="relative py-20 sm:py-24 lg:py-32 z-10 bg-[#F8F9FE] dark:bg-[#080711] border-y border-[#E5E7F0] dark:border-white/[0.06] transition-colors duration-200"
+      className="relative py-16 sm:py-24 lg:py-32 z-10 bg-[#F8F9FE] dark:bg-[#080711] border-y border-[#E5E7F0] dark:border-white/[0.06] transition-colors duration-200 overflow-hidden"
     >
       {/* Background ambient radial glow accents */}
       <div className="absolute top-1/4 -left-32 w-[600px] h-[600px] bg-[#782BFF]/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-10 -right-32 w-[650px] h-[650px] bg-[#4C16B8]/15 rounded-full blur-[150px] pointer-events-none animate-pulse-glow" />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* ========================================================= */}
         {/* 1. MASTER SECTION HEADER                                   */}
         {/* ========================================================= */}
@@ -118,7 +118,7 @@ export const HowItWorksSection: React.FC = () => {
                   ref={(el) => {
                     stepRefs.current[idx] = el;
                   }}
-                  className={`relative py-12 transition-opacity duration-300 md:py-24 ${
+                  className={`relative py-8 sm:py-14 md:py-24 transition-opacity duration-300 ${
                     isActive ? "opacity-100" : "opacity-35"
                   }`}
                 >

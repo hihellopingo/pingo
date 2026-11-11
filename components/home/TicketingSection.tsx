@@ -40,7 +40,7 @@ export const TicketingSection: React.FC<TicketingSectionProps> = ({
       <div className="absolute bottom-10 right-0 w-[650px] h-[650px] bg-[#3984FF]/6 dark:bg-[#3984FF]/10 rounded-full blur-[140px] pointer-events-none animate-pulse-glow" />
       <div className="absolute top-1/2 left-1/3 w-[450px] h-[450px] bg-[#20C5D8]/5 dark:bg-[#20C5D8]/8 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
         
         {/* ========================================================= */}
         {/* 1. SECTION INTRODUCTION (Moved upward, tighter top space) */}

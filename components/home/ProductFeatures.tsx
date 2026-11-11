@@ -32,6 +32,8 @@ const iconMap: Record<string, LucideIcon> = {
 
 export const ProductFeatures: React.FC = () => {
   const [activeModuleIndex, setActiveModuleIndex] = useState(0);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchEndX, setTouchEndX] = useState<number | null>(null);
   const data = productFeaturesData;
   const modules = data.modules;
 
@@ -44,6 +46,28 @@ export const ProductFeatures: React.FC = () => {
 
   const handleNext = () => {
     setActiveModuleIndex((prev) => (prev === modules.length - 1 ? 0 : prev + 1));
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.targetTouches[0].clientX);
+    setTouchEndX(null);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEndX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX === null || touchEndX === null) return;
+    const distance = touchStartX - touchEndX;
+    const minSwipeDistance = 45;
+    if (distance > minSwipeDistance) {
+      handleNext();
+    } else if (distance < -minSwipeDistance) {
+      handlePrev();
+    }
+    setTouchStartX(null);
+    setTouchEndX(null);
   };
 
   // Keyboard navigation support
@@ -67,7 +91,7 @@ export const ProductFeatures: React.FC = () => {
 
     return (
       <div
-        className={`grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center p-6 sm:p-8 lg:p-10 rounded-3xl transition-all duration-300 ${
+        className={`grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center p-4 sm:p-8 lg:p-10 rounded-3xl transition-all duration-300 ${
           isCenter
             ? "bg-white/95 dark:bg-[#141126]/95 border border-[#E5E7F0] dark:border-white/[0.08] backdrop-blur-2xl shadow-xl dark:shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
             : "bg-white/70 dark:bg-[#141126]/60 border border-[#E5E7F0]/60 dark:border-white/[0.05] pointer-events-none"
@@ -197,7 +221,12 @@ export const ProductFeatures: React.FC = () => {
         {/* ========================================================= */}
         {/* 2. 3D FLOATING CAROUSEL WITH BLURRED PREV/NEXT SLIDES     */}
         {/* ========================================================= */}
-        <div className="relative w-full py-4 sm:py-6 overflow-hidden">
+        <div
+          className="relative w-full py-4 sm:py-6 overflow-hidden"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           {/* Previous Card Flank (Blurred Peek on Left) */}
           <div
             onClick={handlePrev}
@@ -240,7 +269,7 @@ export const ProductFeatures: React.FC = () => {
             type="button"
             onClick={handlePrev}
             aria-label="Previous module"
-            className="absolute left-1 sm:left-3 lg:left-5 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/95 dark:bg-[#141126]/90 border border-[#E5E7F0] dark:border-white/10 hover:border-[#782BFF] text-[#171B2E] dark:text-[#D5D0E5] hover:text-[#782BFF] dark:hover:text-white flex items-center justify-center backdrop-blur-md shadow-xl transition-all duration-200 hover:scale-110 cursor-pointer"
+            className="hidden sm:flex absolute left-1 sm:left-3 lg:left-5 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/95 dark:bg-[#141126]/90 border border-[#E5E7F0] dark:border-white/10 hover:border-[#782BFF] text-[#171B2E] dark:text-[#D5D0E5] hover:text-[#782BFF] dark:hover:text-white items-center justify-center backdrop-blur-md shadow-xl transition-all duration-200 hover:scale-110 cursor-pointer"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
@@ -250,33 +279,55 @@ export const ProductFeatures: React.FC = () => {
             type="button"
             onClick={handleNext}
             aria-label="Next module"
-            className="absolute right-1 sm:right-3 lg:right-5 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/95 dark:bg-[#141126]/90 border border-[#E5E7F0] dark:border-white/10 hover:border-[#782BFF] text-[#171B2E] dark:text-[#D5D0E5] hover:text-[#782BFF] dark:hover:text-white flex items-center justify-center backdrop-blur-md shadow-xl transition-all duration-200 hover:scale-110 cursor-pointer"
+            className="hidden sm:flex absolute right-1 sm:right-3 lg:right-5 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/95 dark:bg-[#141126]/90 border border-[#E5E7F0] dark:border-white/10 hover:border-[#782BFF] text-[#171B2E] dark:text-[#D5D0E5] hover:text-[#782BFF] dark:hover:text-white items-center justify-center backdrop-blur-md shadow-xl transition-all duration-200 hover:scale-110 cursor-pointer"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
         </div>
 
         {/* ========================================================= */}
-        {/* 3. CAROUSEL DOT INDICATORS                                */}
+        {/* 3. CAROUSEL DOT INDICATORS & MOBILE CONTROLS              */}
         {/* ========================================================= */}
-        <div className="mt-8 flex items-center justify-center gap-2">
-          {modules.map((_, idx) => {
-            const isActive = activeModuleIndex === idx;
-            return (
-              <button
-                key={idx}
-                type="button"
-                onClick={() => setActiveModuleIndex(idx)}
-                aria-label={`Go to module ${idx + 1}`}
-                aria-current={isActive}
-                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                  isActive
-                    ? "w-7 bg-[#782BFF] dark:bg-[#B5FF45] shadow-[0_0_8px_rgba(120,43,255,0.6)] dark:shadow-[0_0_8px_#B5FF45]"
-                    : "w-2 bg-black/15 dark:bg-white/20 hover:bg-black/30 dark:hover:bg-white/40"
-                }`}
-              />
-            );
-          })}
+        <div className="mt-8 flex items-center justify-center gap-3">
+          {/* Mobile Prev Button */}
+          <button
+            type="button"
+            onClick={handlePrev}
+            aria-label="Previous module"
+            className="sm:hidden p-2 rounded-full bg-white dark:bg-[#141126] border border-[#E5E7F0] dark:border-white/10 text-[#171B2E] dark:text-[#D5D0E5] shadow-md active:scale-95 transition-transform"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+
+          <div className="flex items-center gap-2">
+            {modules.map((_, idx) => {
+              const isActive = activeModuleIndex === idx;
+              return (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => setActiveModuleIndex(idx)}
+                  aria-label={`Go to module ${idx + 1}`}
+                  aria-current={isActive}
+                  className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                    isActive
+                      ? "w-7 bg-[#782BFF] dark:bg-[#B5FF45] shadow-[0_0_8px_rgba(120,43,255,0.6)] dark:shadow-[0_0_8px_#B5FF45]"
+                      : "w-2 bg-black/15 dark:bg-white/20 hover:bg-black/30 dark:hover:bg-white/40"
+                  }`}
+                />
+              );
+            })}
+          </div>
+
+          {/* Mobile Next Button */}
+          <button
+            type="button"
+            onClick={handleNext}
+            aria-label="Next module"
+            className="sm:hidden p-2 rounded-full bg-white dark:bg-[#141126] border border-[#E5E7F0] dark:border-white/10 text-[#171B2E] dark:text-[#D5D0E5] shadow-md active:scale-95 transition-transform"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
         </div>
 
         {/* Bottom Editorial Tagline */}

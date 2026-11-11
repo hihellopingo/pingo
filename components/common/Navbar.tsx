@@ -36,7 +36,7 @@ export const Navbar: React.FC = () => {
           : "bg-transparent py-5"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand Logo & Wordmark */}
         <Link
           href="/"
@@ -113,12 +113,12 @@ export const Navbar: React.FC = () => {
         </div>
 
         {/* Mobile Controls: Theme Toggle & Hamburger */}
-        <div className="flex md:hidden items-center gap-2.5">
+        <div className="flex md:hidden items-center gap-2 sm:gap-3">
           <ThemeToggle />
 
           <Link
             href={navbarCta.href}
-            className="px-3.5 py-1.5 rounded-full text-xs font-semibold text-white bg-[#635BFF] border border-white/10"
+            className="hidden sm:inline-flex px-3.5 py-1.5 rounded-full text-xs font-semibold text-white bg-[#635BFF] border border-white/10"
           >
             Get Started
           </Link>
@@ -141,7 +141,7 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden px-6 pt-4 pb-6 mt-3 bg-[#FFFFFF]/95 dark:bg-[#0B0D19]/95 backdrop-blur-xl border-b border-[#E5E7F0] dark:border-[#292D45] shadow-2xl space-y-4 animate-fadeIn">
+        <div className="md:hidden px-4 sm:px-6 pt-4 pb-6 mt-3 bg-[#FFFFFF]/95 dark:bg-[#0B0D19]/95 backdrop-blur-xl border-b border-[#E5E7F0] dark:border-[#292D45] shadow-2xl space-y-4 animate-fadeIn">
           <div className="flex flex-col space-y-2">
             {navigationItems.map((item) => {
               if (item.isDropdown) {
